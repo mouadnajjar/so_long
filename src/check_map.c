@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:20:49 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/14 17:26:44 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:49:41 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ char	**init_and_fill(t_map *game)
 	find_player(game);
 	dup_map = duplicated_map(game, game->height);
 	if (!dup_map)
-		return (NULL);
+	{
+		freed(game);
+		exit (1);
+	}
 	flood_fill(dup_map, game->player_x, game->player_y);
 	return (dup_map);
 }
@@ -92,7 +95,7 @@ void	check_win_size(t_map *game)
 	window_height = game->height * 32;
 	if (window_width > screen_width || window_height > screen_height)
 	{
-		ft_printf("\033[1;31mError: You exceeds screen dimensions!\n\033[1;0m");
+		ft_putstr_fd("\033[1;31mError\nScreen too big!\n\033[1;0m", 2);
 		free_win(game);
 		exit (1);
 	}

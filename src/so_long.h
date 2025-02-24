@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:20:54 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/15 15:47:05 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:24:00 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	free_map(char **map, int height);
 int		check_path(t_map *game);
 void	destroy_image(t_map *game, void *img);
 void	check_win_size(t_map *game);
+void	ft_putstr_fd(char *s, int fd);
+void	is_valid_map(t_map *game);
 //----------------------------------------------//
 
 //-----------------helpers---------------------//

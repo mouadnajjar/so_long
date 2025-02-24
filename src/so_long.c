@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:20:45 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/14 14:45:02 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:56:59 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	path_error(t_map *game)
 	if (!check_path(game))
 	{
 		freed(game);
-		ft_printf("\033[1;31mERROR ! : your map has an invalid path!\033[0m\n");
+		ft_putstr_fd("\033[1;31mError\ninvalid path!\033[0m\n", 2);
 		exit (1);
 	}
 }
@@ -28,7 +28,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_printf("\033[1;31mUsage : ./so_long <filname.ber>\033[0m\n");
+		ft_putstr_fd("\033[1;31mError\n\033[1;0m", 2);
+		ft_putstr_fd("\033[1;31mUsage : ./so_long <filname.ber>\033[0m\n", 2);
 		return (1);
 	}
 	if (!is_ber_file(av[1]))
@@ -36,6 +37,7 @@ int	main(int ac, char **av)
 	game = laoding_map(av[1]);
 	if (!game->map)
 		ft_error();
+	is_valid_map(game);
 	path_error(game);
 	init_game(game);
 	check_win_size(game);

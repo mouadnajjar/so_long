@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:44:26 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/15 16:56:57 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:51:12 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_map_data(t_map *game)
 t_map	*free_game(t_map *game)
 {
 	free(game);
-	ft_printf("\033[1;31mError\n\033[1;0m");
+	ft_putstr_fd("\033[1;31mError\n\033[1;0m", 2);
 	exit (1);
 }
 
@@ -85,14 +85,14 @@ t_map	*laoding_map(char *filename)
 		free_game(game);
 	game->map = read_map(filename, game->height);
 	if (!game->map)
-		free(game);
+		free_game(game);
 	game->width = ft_strlen(game->map[0]);
 	if (!validate_shape(game->map, game->height)
 		|| !validate_map_walls(game->map, game->width, game->height)
 		|| !is_valid_elements(game))
 	{
 		freed(game);
-		ft_printf("\033[1;31mError: invalid map\033[0m\n");
+		ft_putstr_fd("\033[1;31mError\ninvalid map\033[0m\n", 2);
 		exit (1);
 	}
 	return (game);

@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:31:27 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/15 15:40:46 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:57:29 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_sprites(t_map *game)
 		|| !game->sprites.coins || !game->sprites.open_door
 		|| !game->sprites.player_on_door)
 	{
-		ft_printf("\033[1;31mError: load_textures failed\033[0m\n");
+		ft_putstr_fd("\033[1;31mError\nload_textures failed\033[0m\n", 2);
 		close_window(game);
 	}
 }
@@ -51,4 +51,16 @@ void	frees_sprites(t_map *game)
 		destroy_image(game, game->sprites.open_door);
 	if (game->sprites.player_on_door != NULL)
 		destroy_image(game, game->sprites.player_on_door);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

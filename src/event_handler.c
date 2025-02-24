@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 12:01:20 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/14 13:40:47 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:50:10 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	init_game(t_map *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{
-		ft_printf("Error: MLX init failed\n");
+		ft_printf("Error\nMLX init failed\n");
 		exit(1);
 	}
 	mlx = game->mlx;
@@ -87,7 +87,7 @@ void	init_game(t_map *game)
 	game->window = mlx_new_window(mlx, width * 32, height * 32, "so_long");
 	if (!game->window)
 	{
-		ft_printf("Error: Window creation failed\n");
+		ft_putstr_fd("Error\nWindow creation failed\n", 2);
 		exit(1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:52:56 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/15 16:06:07 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:56:03 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char	*ft_strdup(const char *str)
 		return (NULL);
 	len = ft_strlen(str);
 	new = (char *)malloc(sizeof(char) * (len + 1));
+	if (!new)
+		return (NULL);
 	i = 0;
 	while (str[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:39 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/15 14:29:53 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:16:11 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 void	ft_error(void)
 {
-	printf("\033[1;31mError\033[1;0m\n");
+	ft_putstr_fd("\033[1;31mError\033[1;0m\n", 2);
 	exit (EXIT_FAILURE);
 }
 

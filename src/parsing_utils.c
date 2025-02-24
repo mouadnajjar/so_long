@@ -6,7 +6,7 @@
 /*   By: monajjar <monajjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:13:24 by monajjar          #+#    #+#             */
-/*   Updated: 2025/02/15 17:03:34 by monajjar         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:21:31 by monajjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,9 @@ int	is_ber_file(char	*filename)
 	int	len;
 
 	len = ft_strlen(filename);
-	if (len < 4 || ft_strcmp(filename + (len - 4), ".ber") != 0)
+	if (len <= 4 || ft_strcmp(filename + (len - 4), ".ber") != 0)
+		return (0);
+	if (filename[len - 5] == '/')
 		return (0);
 	return (1);
 }
